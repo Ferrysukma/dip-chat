@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface ChatBubbleProps {
   message: string;
-  time: string;
+  time?: string;
   isUser: boolean;
 }
 
@@ -21,7 +21,7 @@ export default function ChatBubble(props: ChatBubbleProps) {
           alt="Jese image"
         />
       )}
-      <div className="flex flex-col gap-1 w-3/4 max-w-[320px]">
+      <div className="flex flex-col gap-1 max-w-2/3">
         {!isUser && (
           <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
             <span className="text-sm font-semibold text-heading">DIP AI</span>
@@ -33,7 +33,7 @@ export default function ChatBubble(props: ChatBubbleProps) {
             (isUser ? "bg-white-200 text-white" : "bg-neutral-200")
           }
         >
-          <p className="text-sm text-neutral-700">{message}</p>
+          <p className="text-sm text-neutral-700 break-words">{message}</p>
           <span className="text-xs text-neutral-500 text-right">{time}</span>
         </div>
       </div>
