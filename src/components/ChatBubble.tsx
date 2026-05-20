@@ -33,7 +33,7 @@ export default function ChatBubble(props: ChatBubbleProps) {
             (isUser ? "bg-white-200 text-white" : "bg-neutral-200")
           }
         >
-          <p className="text-sm text-neutral-700 break-words">{message}</p>
+          <p className="text-sm text-neutral-700 wrap-break-word">{message}</p>
           <span className="text-xs text-neutral-500 text-right">{time}</span>
         </div>
       </div>
