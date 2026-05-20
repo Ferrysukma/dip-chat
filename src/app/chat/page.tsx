@@ -4,7 +4,6 @@ import ChatInput from "@/src/components/ChatInput";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import LoadingChat from "./loading";
 
 export default function ChatPage() {
   const params = useSearchParams();
@@ -26,6 +25,17 @@ export default function ChatPage() {
   useEffect(() => {
     scrollToBottom();
   }, [chats, loadingChat]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("historyChat");
+    saved && setChats(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    if (chats.length > 0) {
+      localStorage.setItem("historyChat", JSON.stringify(chats));
+    }
+  }, [chats]);
 
   return (
     <>
